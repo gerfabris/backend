@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Mate Pampa",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 1
+  },
+  {
+    "nombre": "Mate Pampa",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 2
+  },
+  {
+    "nombre": "Mate Pampa",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 4
+  },
+  {
+    "nombre": "Mate Pampa",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 5
+  }
+]
