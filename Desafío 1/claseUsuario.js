@@ -10,8 +10,8 @@ class Usuario {
 		return `El nombre completo del usuario es: ${this.nombre} ${this.apellido}`;
 	}
 
-	addMascota(string) {
-        this.mascotas.push(string);
+	addMascota(nombreMascota) {
+        this.mascotas.push(nombreMascota);
     }
 
     countMascotas() {
@@ -23,16 +23,16 @@ class Usuario {
     }
 
     getNombreLibros() {
-        this.libros.map(x => x.nombre);
+        this.libros.map(libro => libro.nombre);
     }
 	
 }
 
-const usuarioDePrueba = new Usuario ("Juan", "Sepulveda", ["Luki"])
+const usuarioDePrueba = new Usuario ("Germán", "Fabris", ["Thor"])
 
 usuarioDePrueba.getNombreCompleto()
-usuarioDePrueba.addMascota("Lila")
-usuarioDePrueba.addMascota("Zanello")
+usuarioDePrueba.addMascota("Bam Bam")
+usuarioDePrueba.addMascota("Tommy")
 usuarioDePrueba.countMascotas()
 usuarioDePrueba.addLibro("IT", "Stephen King")
 usuarioDePrueba.addLibro("El Resplandor", "Stephen King")

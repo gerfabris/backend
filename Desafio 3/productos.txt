@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Mate Pampa",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 1
+  },
+  {
+    "nombre": "Mate Criollo",
+    "stock": 15,
+    "categoria": "Mate",
+    "id": 2
+  },
+  {
+    "nombre": "Termo Pampa",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 3
+  },
+  {
+    "nombre": "Termo Belleza Térmica",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 4
+  }
+]
