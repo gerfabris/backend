@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Producto 1",
+    "price": "100",
+    "thumbnail": "Categoria 2"
+  },
+  {
+    "nombre": "Termo Pampa",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 2
+  },
+  {
+    "nombre": "Termo Pampa",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 3
+  },
+  {
+    "nombre": "Termo Belleza Térmica",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 4
+  },
+  {
+    "title": "Calculadora",
+    "price": "100",
+    "thumbnail": "Asdasd",
+    "id": 5
+  },
+  {
+    "nombre": "Termo Pampa",
+    "stock": 15,
+    "categoria": "Termo",
+    "id": 6
+  },
+  {
+    "title": "asdasd",
+    "price": "1454",
+    "thumbnail": "asdasd",
+    "id": 7
+  },
+  {
+    "title": "asdasd",
+    "price": "1454",
+    "thumbnail": "asdasd",
+    "id": 8
+  }
+]
