@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('../partials/head.ejs') %>
+	<body class="container bg-light">
+		<header>
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Formulario</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/productos">
+                        Productos
+                    </a>
+				</li>
+			</ul>
+		</header>
+		<h2 class="text-primary mt-4">Productos en el archivo</h2>
+		<% if (productos.length == 0) {%>
+            <h3 class="alert-danger rounded p-2">No se encontraron productos</h3>
+		<% } else {%>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">URL imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% productos.forEach(producto => {%>
+                    <tr>
+                        <th scope="row"><%= producto.title %></th>
+                        <td><%= producto.id %></td>
+                        <td><%= producto.price %></td>
+                        <td><img src=<%= producto.thumbnail %> class="img-fluid img-thumbnail" alt=""></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+		<% }%> 
+        <%- include('../partials/scripts.ejs');%>
+	</body>
+</html>
