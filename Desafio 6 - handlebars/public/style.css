@@ -1,0 +1,16 @@
+.messages__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    max-height: 300px;
+    box-shadow: 3px 3px 15px #023661;
+    padding: 2em;
+}
+.email{
+    font-weight: bold;
+}
+.date{
+    color: brown;
+}
