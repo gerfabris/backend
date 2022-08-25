@@ -1,0 +1,19 @@
+{
+  "name": "desafio-7---primer-pre-entrega",
+  "version": "1.0.0",
+  "description": "Deberás entregar el estado de avance de tu aplicación eCommerce Backend, que implemente un servidor de aplicación basado en la plataforma Node.js y el módulo express.  El servidor implementará dos conjuntos de rutas agrupadas en routers, uno con la url base '/productos' y el otro con '/carrito'.  El puerto de escucha será el 8080 para desarrollo y process.env.PORT para producción en glitch.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "socket.io": "^4.5.1"
+  }
+}

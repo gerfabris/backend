@@ -1,11 +1,11 @@
 const Contenedor = require('./contenedor.js')
-const contenedor = new Contenedor('./productos.txt')
+const contenedor = new Contenedor('./productos.json')
 
 const ContenedorMensaje = require('./contenedorMensaje.js')
 const contenedorMensaje = new ContenedorMensaje('./mensajes.txt')
 
 const express = require('express')
-const handlebars = require('express-handlebars');
+
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
 
