@@ -44,16 +44,32 @@ cartRouter.get('/:id/productos', async (req, res) => {
 	};
 });
 
-//Enviar carritos
+//Crear carritos con o sin producto
 cartRouter.post('/', async (req, res) => {
 	try {
 		const idProducto = parseInt(req.body.idProducto)
-		const producto = await productos.getById(idProducto)
-		const carrito = await carts.crearCarrito(producto);
-		res.send({
-			msg: `Se cargó el producto ${producto.id} en el carrito ${carrito.id}`,
-			carrito
-		})
+
+		const crearCarritoConProducto =  async (idProducto) =>{
+			const producto = await productos.getById(idProducto)
+			const carrito = await carts.crearCarrito(producto);
+			const respuesta = res.send({
+				msg: `Se cargó el producto ${producto.id} en el carrito ${carrito.id}`,
+				carrito
+			})
+			return respuesta
+		}
+
+		const crearCarritoSinProducto = async () =>{
+			const carrito = await carts.crearCarrito();
+			const respuesta = res.send({
+				msg: `Se cargó el carrito ID: ${carrito.id}`,
+				carrito
+			})
+			return respuesta
+		}
+
+		idProducto ? crearCarritoConProducto(idProducto) : crearCarritoSinProducto()
+
 	}
 	catch (error) {
 		throw new Error(`Hubo un error al agregar el producto`);
