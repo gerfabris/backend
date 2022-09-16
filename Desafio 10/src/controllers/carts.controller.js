@@ -4,8 +4,21 @@ const { carritosDao }  = require('../daos/index')
 // Obtener los carritos
 const getCarts = async (req, res) => {
 	try {
-		const carrito = await carritosDao.getAll({})
-		res.send(await carritosDao.getAll({}));
+		const carrito = await carritosDao.getAll()
+		//res.send(carrito);
+		return carrito
+	}
+	catch (error) {
+		throw new Error("Hubo un error al mostrar los carritos");
+	}
+}
+// Obtener carrito por ID
+const getCartByID = async (req, res) => {
+	try {
+		const id = req.params.id
+		const carrito = await carritosDao.getById(id)
+		res.send(carrito);
+		return carrito
 	}
 	catch (error) {
 		throw new Error("Hubo un error al mostrar los carritos");
@@ -15,12 +28,13 @@ const getCarts = async (req, res) => {
 const getProductsByIdCart = async (req, res) => {
 	try {
 		const id = req.params.id
-		//console.log(`Carrito buscado: ${id}`);
+		console.log(`Carrito buscado: ${id}`);
 		const carrito = await carritosDao.getById(id);
-		console.log(carrito, 'detectado');
+		console.log(carrito);
 		const productosCarrito = carrito.productos
 		if(carrito){
-			res.send(productosCarrito)
+			res.send(carrito)
+			return productosCarrito
 		}else{
 			console.log("No existe el carrito seleccionado");
 		}
@@ -105,6 +119,7 @@ const deleteProductInToCart = async (req, res) => {
 
 module.exports = {
     getCarts,
+	getCartByID,
     getProductsByIdCart,
     createCart,
     postProductInToCart,

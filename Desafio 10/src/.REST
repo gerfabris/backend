@@ -1,6 +1,11 @@
-POST  http://localhost:8080/api/carrito/ HTTP/1.1
+GET  http://localhost:8080/api/carrito/sy9zif9emRi9v7hHRErb/productos HTTP/1.1
 Content-Type: application/json
 
 {
-    "idProducto": "wAEXJnLRWJAoogpi9rOV"
+    "title": "MessirvoMate",
+    "description": "Soy un mate actualizado en firebase",
+    "code": 5555,
+    "price": 1456,
+    "thumbnail": "Soy otro thum",
+    "stock": 25
 }

@@ -34,14 +34,11 @@ class CartsFirebase{
         }
     }
     async getById(id){
-
         try{
             const carritos = this.db.doc(id);
-
             if(carritos){
-                //console.log(cart);
-                const doc = await getall.get()
-                return doc.data()
+                const carrito = await carritos.get()
+                return carrito.data()
             }else{
                 console.log("No se encontró un carrito con ese ID");
                 return null
@@ -52,10 +49,18 @@ class CartsFirebase{
     }
     async getAll(){
         try{
-            const carritos = await this.db.get()
+            //console.log(this.db);
+            const querySnapshot = await this.db.get()
+            const carritos = querySnapshot.docs
+
             if(carritos){
-                let carrito = carritos.docs.map(obj=>obj.data())
-                return carrito
+                //let carrito = carritos.docs.map(obj=>obj.data())
+                const respuesta = carritos.map( car => ({
+                    id: car.id,
+                    productos : car.data()
+                }))
+                console.log(respuesta);
+                return respuesta
             }else{
                 console.log("No hay carrito en el contenedor");
                 //return null
