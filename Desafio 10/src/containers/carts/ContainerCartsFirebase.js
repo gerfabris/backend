@@ -7,11 +7,18 @@ class CartsFirebase{
     async crearCarrito(obj){
         try{
             if(obj){
-                const carritoNuevo = await this.db.add(obj)
+                const carrito = {
+                    timestamp: Date.now()
+                }
+                const carritoNuevo = await this.db.add(carrito,obj)
                 console.log(`El carrito fue cargado: ${carritoNuevo}`);
                 return (`El carrito fue cargado: ${carritoNuevo}`)
             }else{
-                const carritoNuevo = await this.db.add()
+                const carrito = {
+                    timestamp: Date.now()
+                }
+                const carritoNuevo = await this.db.add(carrito)
+                console.log(`El carrito fue cargado: ${carritoNuevo}`);
                 return (`El carrito fue cargado: ${carritoNuevo}`)
             }
         }catch(error){
