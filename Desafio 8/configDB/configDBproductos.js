@@ -1,6 +1,8 @@
 const { optionsMySQL } = require('../connections/conexionDB.js')
 const knex = require('knex')(optionsMySQL)
 
+console.log( optionsMySQL);
+
 const crearTablaProductos = async (nombreDB) =>{
     try {
         await knex.schema.createTable(nombreDB, table =>{

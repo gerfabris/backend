@@ -5,7 +5,7 @@ const { carritosDao }  = require('../daos/index')
 const getCarts = async (req, res) => {
 	try {
 		const carrito = await carritosDao.getAll()
-		//res.send(carrito);
+		res.send(carrito);
 		return carrito
 	}
 	catch (error) {
@@ -52,14 +52,15 @@ const createCart = async (req, res) => {
 			const producto = await productosDao.getById(idProducto)
 			console.log(producto);
 			const carrito = await carritosDao.crearCarrito(producto);
-
+			const respuesta = carrito
+			res.send(respuesta)
 			return carrito
 		}
 
 		const crearCarritoSinProducto = async () =>{
 			const carrito = await carritosDao.crearCarrito();
 			const respuesta = carrito
-			
+			res.send(respuesta)
 			return respuesta
 		}
 
