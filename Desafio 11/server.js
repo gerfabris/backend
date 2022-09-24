@@ -72,22 +72,32 @@ io.on('connection', async (socket) =>{
     let getMensajes = await contenedorMensajes.getAll()
     const messages = getMensajes
     let pesoOriginal = JSON.stringify(messages).length;
-console.log(pesoOriginal);
-    const authorSchema = new schema.Entity('author' , {}, {idAttribute: 'email'});
+    
+    console.log(`El tamaño original del archivo era de: `, pesoOriginal);
+    
+    const idSchema = new schema.Entity('id' );
+    const authorSchema = new schema.Entity('author');
     const textSchema = new schema.Entity('text')
     const mensajeSchema = new schema.Entity('messages', {
+        id: idSchema,
         author: authorSchema,
         text: textSchema
     })
 
-    const normalizedMensajes = normalize(messages, mensajeSchema)
-
+    const normalizedMensajes = normalize(messages, [mensajeSchema])
+    //print(normalizedMensajes)
+    console.log( `Luego el tamaño del archivo quedó en: `, JSON.stringify(normalizedMensajes).length);
+    
     //const getNormalize = messages.map( msg => normalize(msg, mensajeSchema))
 
-    const denormalizedMensajes = denormalize(normalizedMensajes, mensajeSchema, normalizedMensajes)
+    const denormalizedMensajes = denormalize(normalizedMensajes, mensajeSchema, normalizedMensajes.entities)
+    //print(denormalizedMensajes)
+    //console.log(denormalizedMensajes);
+    console.log(JSON.stringify(denormalizedMensajes).length);
 
-    let desnormalizado = JSON.stringify(denormalizedMensajes).length;
-    const compresion = (desnormalizado / pesoOriginal).toFixed(2)
+    let pesoComprimido = JSON.stringify(normalizedMensajes).length;
+
+    const compresion = ((pesoComprimido * 100) / pesoOriginal).toFixed(2)
 
     console.log(`El porcentaje de compresión ha sido del: ${compresion} %`);
 
