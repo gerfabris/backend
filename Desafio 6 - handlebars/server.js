@@ -1,10 +1,11 @@
+//require clases
 const Contenedor = require('./contenedor.js')
 const contenedor = new Contenedor('./productos.json')
-
 const ContenedorMensaje = require('./contenedorMensaje.js')
 const contenedorMensaje = new ContenedorMensaje('./mensajes.txt')
-
+// require general
 const express = require('express')
+const dotenv = require('dotenv').config()
 
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
@@ -13,7 +14,7 @@ const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-const PORT = process.eventNames.PORT || 8080
+const PORT = process.env.PORT || 8080
 
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
