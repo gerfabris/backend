@@ -1,3 +1,4 @@
+/* --- productos ----- */
 const optionsMySQL = {
     client: 'mysql',
     connection: {
@@ -7,6 +8,7 @@ const optionsMySQL = {
         database: 'ecommerce'
     }
 }
+/* ---- mensajes ------  */
 
 const optionsSQLite3 = {
     client:'sqlite3',
@@ -15,22 +17,5 @@ const optionsSQLite3 = {
     },
     useNullAsDefault: true
 }
-//Conection Mongo Atlas
-const mongoose = require('mongoose')
-const dotenv = require('dotenv').config()
-const { MONGO_USER, MONGO_PASSWORD, MONGO_HOST} = process.env
-const connectMongoDB = async () =>{
-    try {
-        const url = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`
-        mongoose.connect(url, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
-        console.log('MongoDB connected');
 
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-module.exports = { optionsMySQL, optionsSQLite3, connectMongoDB }
+module.exports = { optionsMySQL, optionsSQLite3 }

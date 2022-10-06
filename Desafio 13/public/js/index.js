@@ -1,5 +1,4 @@
 const server = io().connect()
-//const handlebars = require('../express-handlebars');
 
 const addProduct = (evt) => {
     const title = document.getElementById('title').value
@@ -44,7 +43,7 @@ const insertCompresionHTML = compresion =>{
 
 const renderProductos = productos => {
     let listado = document.getElementById('list')        
-    fetch('/partials/listaProductos.hbs')
+    fetch('../views/partials/listaProductos.hbs')
         .then((res) => res.text())
         .then((data) =>{
             const template = Handlebars.compile(data)
@@ -60,7 +59,7 @@ const renderProductos = productos => {
 
 const renderMensajes =  ( messages) =>{
     let listadoMensajes = document.getElementById('messages')
-    fetch('/partials/mensajes.hbs')
+    fetch('../views/partials/mensajes.hbs')
     .then((res) => res.text())
     .then((data) =>{
         const template = Handlebars.compile(data)
@@ -71,24 +70,16 @@ const renderMensajes =  ( messages) =>{
     })
 }
 
-const renderLoguin =  ( nameUser ) =>{
-    let loguin = document.getElementById('loguin')
-    fetch('/partials/login.hbs')
-    .then((res) => res.text())
-    .then((data) =>{
-        const template = Handlebars.compile(data)
-        const html = template({ 
-            nameUser: nameUser 
-        })       
-        loguin.innerHTML = html 
-    })
-}
-
-server.on('mensaje-servidor', (productos , messages, compresion, nameUser) =>{
+/* ---- server escucha mensaje para insertar productos ------- */
+server.on('mensaje-servidor-productos', ( productos ) =>{
     renderProductos (productos)
-    renderMensajes (messages)
-    insertCompresionHTML(compresion)
-    renderLoguin(nameUser)
 })
 
+
+/* ---- server escucha mensaje para insertar mensajes ------ */
+server.on('mensaje-servidor-chat', (messages, compresion) =>{
+    renderMensajes (messages)
+    insertCompresionHTML(compresion)
+    
+})
 

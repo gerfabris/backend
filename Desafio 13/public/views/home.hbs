@@ -13,7 +13,7 @@
     />
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <header>
@@ -26,7 +26,11 @@
     <main class="container-fluid">
         <h1 class="h1 my-4 text-primary text-center">Formulario y Chat con WebSocket</h1>
         <section class="section__bienvenida section">
-            <div id="loguin"></div>
+            {{#if username }}
+                <h3 class="alert-success rounded p-3">Bienvenido {{username}}</h3>  
+                {{else}}
+                <h3 class="alert-success rounded p-3">Bienvenido 🚀</h3>  
+            {{/if}}
             <form method="POST">
                 <a href="/logout" class="my-4 container-fluid">
                     <button type="submit" class="btn btn-dark">Cerrar sesión</button>
@@ -72,7 +76,7 @@
                 <input type="text" id="text" class="form-control w-75 my-2" placeholder="Escriba su mensaje"/>
                 <button type="submit" class="btn btn-dark">Enviar mensaje</button>
             </form>
-            <div id="messages" class="messages-container container my-4"">
+            <div id="messages" class="messages-container container my-4">
             </div>
         </div>
     </main>
@@ -82,6 +86,6 @@
         crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

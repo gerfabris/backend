@@ -1,7 +1,7 @@
 const server = io().connect()
 
 const generarProductos = () =>{
-
+    console.log('se emite el producto msj');
     server.emit('productos-test', (id) =>{
         console.log(id);
     })
@@ -9,11 +9,17 @@ const generarProductos = () =>{
     return false
 }
 
+const getGenerar = document.getElementById('generarProductos')
+getGenerar.addEventListener('click', () =>{
+    console.log('estamos por aca');
+    generarProductos()
+})
+
 const renderProductosTest = (productosTest) =>{
 
     let listado = document.getElementById('listProductosTest')
 
-    fetch('/partials/productosTest.hbs')
+    fetch('../views/partials/productosTest.hbs')
         .then((res) => res.text())
         .then((data) =>{
             const template = Handlebars.compile(data)
@@ -31,5 +37,6 @@ const renderProductosTest = (productosTest) =>{
 }
 
 server.on('mensaje-servidor-productosTest', (productosTest) =>{
+    console.log('mensaje-servidor-productosTest');
     renderProductosTest (productosTest)
 })
