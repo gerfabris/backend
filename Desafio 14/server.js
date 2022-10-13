@@ -9,11 +9,12 @@ const signup = require('./routes/signup.js');
 const home = require('./routes/home.js');
 const logout = require('./routes/logout.js');
 const productosTest = require('./routes/productos-test.js');
+const info = require('./routes/info.js');
+const randoms = require('./routes/randoms.js');
 /* ----- socket ------- */
 const productosTestSocket = require('./sockets/productos-test.js');
 const mensajes = require('./sockets/mensajes.js');
 const productos = require('./sockets/productos.js');
-
 /* --------- app -------- */
 const app = express();
 /* ------ config socket ------ */
@@ -21,6 +22,8 @@ const { Server: HttpServer } = require('http')
 const { Server: IOSocket } = require('socket.io')
 const httpServer = new HttpServer(app)
 const io = new IOSocket(httpServer)
+/* --------- fork  ------------ */
+const { fork } = require('child_process')
 /* --------- sets ------------ */
 app.set('view engine', 'hbs');
 app.set('views', (__dirname + '/public/views'));
@@ -50,14 +53,24 @@ app.use(signup);
 app.use(home);
 app.use(logout);
 app.use(productosTest);
+app.use(info);
+app.use(randoms);
+
+/* ----- httpServer escuchando para fork */
+/* httpServer.on( 'request', (req, res) =>{
+    let { url } = req
+    if( url === '/api/randoms'){
+
+    }
+}) */
 /* ----- socket escuchando las conecciones */
 io.on('connection', async (socket) =>{
     console.log('A user connected');
 
     productosTestSocket(socket, io)
-    productos(socket,io)
-    mensajes(socket,io)
-    
+    productos(socket, io)
+    mensajes(socket, io)
+
     socket.emit ('mensaje-servidor')
     
 });
