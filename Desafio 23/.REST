@@ -1,0 +1,31 @@
+POST http://localhost:1337/user HTTP/1.1
+Content-Type: application/json
+
+{
+    "userEmail": "g@gmail.com",
+    "password": "g1234"
+}
+
+
+####
+POST http://localhost:1337/products HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Pampa",
+    "price": 1234,
+    "description": "Mate pampeano",
+    "code": "ASdaskd456",
+    "stock": 15
+}
+####
+PUT http://localhost:1337/products/63a2378c62cdf6472403d308 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Pampa",
+    "price": 1234,
+    "description": "Mate pampeano y mundialista",
+    "code": "ASdaskd456",
+    "stock": 30
+}
